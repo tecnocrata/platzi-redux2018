@@ -1,17 +1,18 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   entry: {
-    "home": path.resolve(__dirname, 'src/entries/home.js'),
+    home: path.resolve(__dirname, "src/entries/home.js"),
+    redux: path.resolve(__dirname, "src/entries/redux.js")
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "js/[name].js"
   },
   devServer: {
-    port: 9000,
+    port: 9000
   },
-  devtool: 'eval-source-map',
+  devtool: "eval-source-map",
   module: {
     rules: [
       {
@@ -20,27 +21,27 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['es2015', 'react', 'stage-2'],
+            presets: ["es2015", "react", "stage-2"]
           }
-        },
+        }
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
         use: {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 1000000,
-            fallback: 'file-loader',
-            name: 'images/[name].[hash].[ext]',
+            fallback: "file-loader",
+            name: "images/[name].[hash].[ext]"
           }
         }
-      },
+      }
     ]
   }
-}
+};
