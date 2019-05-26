@@ -38,10 +38,20 @@ const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(reducer, initialState, enhancer);
 
-const $container = document.getElementById("playlist");
-const playlist = store.getState();
-playlist.forEach(element => {
-  const template = document.createElement("p");
-  template.textContent = element.title;
-  $container.appendChild(template);
-});
+const render = () => {
+  const $container = document.getElementById("playlist");
+  $container.innerHTML = "";
+  const playlist = store.getState();
+  playlist.forEach(element => {
+    const template = document.createElement("p");
+    template.textContent = element.title;
+    $container.appendChild(template);
+  });
+};
+
+render();
+
+const handleChange = () => {
+  render();
+};
+store.subscribe(handleChange);
