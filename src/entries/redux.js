@@ -14,8 +14,14 @@ function handleSubmit(e) {
   });
 }
 
-const reducer = state => {
-  return state;
+const reducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "ADD_SONG":
+      return [...state, { title: payload.title }];
+    default:
+      return state;
+  }
 };
 const initialState = [
   {
