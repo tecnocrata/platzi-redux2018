@@ -27,3 +27,11 @@ const initialState = [
 const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(reducer, initialState, enhancer);
+
+const $container = document.getElementById("playlist");
+const playlist = store.getState();
+playlist.forEach(element => {
+  const template = document.createElement("p");
+  template.textContent = element.title;
+  $container.appendChild(template);
+});
