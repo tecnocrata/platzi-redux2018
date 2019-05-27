@@ -6,16 +6,18 @@ import data from "../api.json";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import mainReducer from "../reducers/mainReducer";
 
-const reducer = state => {
-  return state;
-};
+// const reducer = state => {
+//   return state;
+// };
+
 const initialState = {
   data: { ...data }
 };
 const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = createStore(reducer, initialState, enhancer);
+const store = createStore(mainReducer, initialState, enhancer);
 
 const homeContainer = document.getElementById("home-container");
 
