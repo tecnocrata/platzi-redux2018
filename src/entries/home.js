@@ -13,7 +13,9 @@ import mainReducer from "../reducers/mainReducer";
 // };
 
 const initialState = {
-  data: { ...data }
+  loading: false,
+  data: { ...data },
+  searchVideos: []
 };
 const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
