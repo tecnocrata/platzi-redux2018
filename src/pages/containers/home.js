@@ -56,7 +56,7 @@ const mapStateToProps = (state, props) => {
   });
   return {
     categories: categories,
-    searchVideos: state.searchVideos
+    searchVideos: state.data.searchVideos
   };
 };
 

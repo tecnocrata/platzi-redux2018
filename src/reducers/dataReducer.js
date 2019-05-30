@@ -1,4 +1,13 @@
-const main = (state, acction) => {
+import normalized from "../schemas";
+
+const initialState = {
+  //...data
+  entities: normalized.entities,
+  categories: normalized.result.categories,
+  searchVideos: [] //Esto lo metio dentro de data para tener un unico reducer para data
+};
+
+const main = (state = initialState, acction) => {
   const { type, payload } = acction;
   switch (type) {
     case "SEARCH_VIDEO":

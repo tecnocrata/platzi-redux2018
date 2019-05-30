@@ -8,7 +8,9 @@ function Playlist(props) {
     <div className="Playlist">
       {props.playlist.map(id => {
         //return <Media openModal={props.handleOpenModal} {...item} key={item.id} />
-        return <MediaContainer openModal={props.handleOpenModal} id={id} />;
+        return (
+          <MediaContainer openModal={props.handleOpenModal} id={id} key={id} />
+        );
       })}
     </div>
   );

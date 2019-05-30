@@ -3,27 +3,28 @@ import { hydrate, render } from "react-dom";
 import Home from "../pages/containers/home";
 // import Playlist from './src/playlist/components/playlist';
 //import data from "../api.json";
-import normalized from "../schemas";
+//import normalized from "../schemas";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import mainReducer from "../reducers/mainReducer";
+import rootReducer from "../reducers";
 
-// const reducer = state => {
-//   return state;
+//console.log(normalized);
+// const initialState = {
+//   loading: false,
+//   data: {
+//     //...data
+//     entities: normalized.entities,
+//     categories: normalized.result.categories,
+//     searchVideos: [] //Esto lo metio dentro de data para tener un unico reducer para data
+//   },
+//   modal: {
+//     visibility: false,
+//     mediaId: -1
+//   }
 // };
-console.log(normalized);
-const initialState = {
-  loading: false,
-  data: {
-    //...data
-    entities: normalized.entities,
-    categories: normalized.result.categories
-  },
-  searchVideos: []
-};
 const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = createStore(mainReducer, initialState, enhancer);
+const store = createStore(rootReducer, {}, enhancer);
 
 const homeContainer = document.getElementById("home-container");
 
