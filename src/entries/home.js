@@ -2,8 +2,8 @@ import React from "react";
 import { hydrate, render } from "react-dom";
 import Home from "../pages/containers/home";
 // import Playlist from './src/playlist/components/playlist';
-import data from "../api.json";
-
+//import data from "../api.json";
+import normalized from "../schemas";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import mainReducer from "../reducers/mainReducer";
@@ -11,10 +11,14 @@ import mainReducer from "../reducers/mainReducer";
 // const reducer = state => {
 //   return state;
 // };
-
+console.log(normalized);
 const initialState = {
   loading: false,
-  data: { ...data },
+  data: {
+    //...data
+    entities: normalized.entities,
+    categories: normalized.result.categories
+  },
   searchVideos: []
 };
 const enhancer =
