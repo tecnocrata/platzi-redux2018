@@ -7,6 +7,7 @@ import Home from "../pages/containers/home";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "../reducers";
+import { Map as map } from "immutable";
 
 //console.log(normalized);
 // const initialState = {
@@ -24,7 +25,7 @@ import rootReducer from "../reducers";
 // };
 const enhancer =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-const store = createStore(rootReducer, {}, enhancer);
+const store = createStore(rootReducer, map(), enhancer);
 
 const homeContainer = document.getElementById("home-container");
 

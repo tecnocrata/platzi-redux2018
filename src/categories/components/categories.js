@@ -5,15 +5,16 @@ import Search from "../../widgets/containers/search";
 
 function Categories(props) {
   const cats =
-    props.searchVideos.length == 0 ? props.categories : props.searchVideos;
+    props.searchVideos.size == 0 ? props.categories : props.searchVideos;
   return (
     <div className="Categories">
       <Search />
       {cats.map(item => {
+        //ITEM is now a MAP!!!!!
         return (
           <Category
-            key={item.id}
-            {...item}
+            key={item.get("id")}
+            {...item.toJS()}
             handleOpenModal={props.handleOpenModal}
           />
         );

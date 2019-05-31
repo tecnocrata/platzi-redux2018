@@ -7,7 +7,7 @@ class MediaContainer extends React.Component {
     return (
       <Media
         openModal={this.props.handleOpenModal}
-        {...this.props.media}
+        {...this.props.media.toJS()}
         key={this.props.media.id}
       />
     );
@@ -15,7 +15,12 @@ class MediaContainer extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const media = state.data.entities.medias[props.id];
+  const media = state
+    .get("data")
+    .get("entities")
+    //.get("medias")[props.id];
+    .get("medias")
+    .get(props.id);
   return { media };
 };
 

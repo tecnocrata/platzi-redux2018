@@ -33,11 +33,13 @@
   },
   "dependencies": {
     "express": "4.16.2",
+    "immutable": "^4.0.0-rc.12",
     "normalizr": "^3.3.0",
     "prop-types": "15.6.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "^7.0.3",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0"
   }
 }
