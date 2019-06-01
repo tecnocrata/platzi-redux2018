@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Search from "../components/search";
 import { connect } from "react-redux";
-import { searchVideo } from "../../actions";
+//import { searchVideo } from "../../actions";
+import * as actions from "../../actions";
+import { bindActionCreators } from "redux";
 
 class SearchContainer extends Component {
   state = {
@@ -16,7 +18,7 @@ class SearchContainer extends Component {
     //     query: this.input.value
     //   }
     // });
-    this.props.dispatch(searchVideo(this.input.value));
+    this.props.actions.searchVideo(this.input.value);
   };
   setInputRef = element => {
     this.input = element;
@@ -38,4 +40,13 @@ class SearchContainer extends Component {
   }
 }
 
-export default connect()(SearchContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SearchContainer);
