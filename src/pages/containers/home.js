@@ -7,6 +7,7 @@ import Modal from "../../widgets/components/modal";
 import HandleError from "../../error/containers/handle-error";
 import VideoPlayer from "../../player/containers/video-player";
 import { connect } from "react-redux";
+import immutable from "immutable";
 
 class Home extends Component {
   state = {
@@ -61,10 +62,24 @@ const mapStateToProps = (state, props) => {
         .get("categories")
         .get(c);
     });
-  //debugger;
+  const searchText = state.get("data").get("searchText");
+  let searchVideos = immutable.List();
+  if (searchText) {
+    searchVideos = state
+      .get("data")
+      .get("entities")
+      .get("medias")
+      .filter(media => {
+        return media
+          .get("title")
+          .toLowerCase()
+          .includes(searchText);
+      })
+      .toList();
+  }
   return {
     categories: categories,
-    searchVideos: state.get("data").get("searchVideos")
+    searchVideos
   };
 };
 
