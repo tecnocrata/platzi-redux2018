@@ -1,10 +1,12 @@
 import React from "react";
 import Media from "../components/media";
 import { connect } from "react-redux";
+import { openModal } from "../../actions";
 
 class MediaContainer extends React.Component {
   openModal = id => {
-    this.props.dispatch({ type: "OPEN_MODAL", payload: { mediaId: id } });
+    //this.props.dispatch({ type: "OPEN_MODAL", payload: { mediaId: id } });
+    this.props.dispatch(openModal(id));
   };
   render() {
     return (

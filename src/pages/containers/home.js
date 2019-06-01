@@ -8,6 +8,7 @@ import HandleError from "../../error/containers/handle-error";
 import VideoPlayer from "../../player/containers/video-player";
 import { connect } from "react-redux";
 import immutable from "immutable";
+import { closeModal } from "../../actions";
 
 class Home extends Component {
   // state = {
@@ -21,10 +22,8 @@ class Home extends Component {
     });
   };
   handleCloseModal = event => {
-    // this.setState({
-    //   modalVisible: false
-    // });
-    this.props.dispatch({ type: "CLOSE_MODAL" });
+    //this.props.dispatch({ type: "CLOSE_MODAL" });
+    this.props.dispatch(closeModal());
   };
   render() {
     return (
