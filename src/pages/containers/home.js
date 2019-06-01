@@ -10,9 +10,10 @@ import { connect } from "react-redux";
 import immutable from "immutable";
 
 class Home extends Component {
-  state = {
-    modalVisible: false
-  };
+  // state = {
+  //   modalVisible: false
+  // };
+  //Deberiamos quitar este metodo
   handleOpenModal = media => {
     this.setState({
       modalVisible: true,
@@ -20,9 +21,10 @@ class Home extends Component {
     });
   };
   handleCloseModal = event => {
-    this.setState({
-      modalVisible: false
-    });
+    // this.setState({
+    //   modalVisible: false
+    // });
+    this.props.dispatch({ type: "CLOSE_MODAL" });
   };
   render() {
     return (
@@ -34,13 +36,14 @@ class Home extends Component {
             handleOpenModal={this.handleOpenModal}
             searchVideos={this.props.searchVideos}
           />
-          {this.state.modalVisible && (
+          {this.props.modal.get("visibility") && (
             <ModalContainer>
               <Modal handleClick={this.handleCloseModal}>
                 <VideoPlayer
                   autoplay
-                  src={this.state.media.src}
-                  title={this.state.media.title}
+                  // src={this.state.media.src}
+                  // title={this.state.media.title}
+                  id={this.props.modal.get("mediaId")}
                 />
               </Modal>
             </ModalContainer>
@@ -79,7 +82,8 @@ const mapStateToProps = (state, props) => {
   }
   return {
     categories: categories,
-    searchVideos
+    searchVideos,
+    modal: state.get("modal")
   };
 };
 

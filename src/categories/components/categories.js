@@ -3,6 +3,7 @@ import Category from "./category";
 import "./categories.css";
 import Search from "../../widgets/containers/search";
 import Media from "../../playlist/components/media";
+import MediaContainer from "../../playlist/containers/media";
 
 function Categories(props) {
   const cats =
@@ -28,7 +29,15 @@ function Categories(props) {
       <div>
         <Search />
         {cats.map(item => {
-          return <Media key={item.get("id")} {...item.toJS()} />;
+          //return <Media key={item.get("id")} {...item.toJS()} />;
+          //Usando MediaContainer para poder tener el despliegue de los modales
+          return (
+            <MediaContainer
+              openModal={props.handleOpenModal}
+              id={item.get("id")}
+              key={item.get("id")}
+            />
+          );
         })}
       </div>
     );
