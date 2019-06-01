@@ -1,14 +1,23 @@
+import { OPEN_MODAL, CLOSE_MODAL, SEARCH_VIDEO } from "../action-types";
 export function openModal(id) {
-  return { type: "OPEN_MODAL", payload: { mediaId: id } };
+  //return { type: "OPEN_MODAL", payload: { mediaId: id } };
+  return { type: OPEN_MODAL, payload: { mediaId: id } };
 }
 
 export function closeModal() {
-  return { type: "CLOSE_MODAL" };
+  //return { type: "CLOSE_MODAL" };
+  return { type: CLOSE_MODAL };
 }
 
 export function searchVideo(searchText) {
+  // return {
+  //   type: "SEARCH_VIDEO",
+  //   payload: {
+  //     query: searchText
+  //   }
+  // };
   return {
-    type: "SEARCH_VIDEO",
+    type: SEARCH_VIDEO,
     payload: {
       query: searchText
     }

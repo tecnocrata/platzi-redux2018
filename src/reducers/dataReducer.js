@@ -1,5 +1,6 @@
 import normalized from "../schemas";
 import { fromJS } from "immutable";
+import { SEARCH_VIDEO } from "../action-types";
 
 const initialState = fromJS({
   //...data
@@ -12,7 +13,8 @@ const initialState = fromJS({
 const main = (state = initialState, acction) => {
   const { type, payload } = acction;
   switch (type) {
-    case "SEARCH_VIDEO":
+    //case "SEARCH_VIDEO":
+    case SEARCH_VIDEO:
       // let categories = [];
       // let c1 = 0;
       // state
