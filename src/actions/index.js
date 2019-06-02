@@ -24,6 +24,17 @@ export function searchVideo(searchText) {
   };
 }
 
+export function searchAsynVideo(searchText) {
+  //simulando el uso de:
+  //fetch
+  //axios
+  return function(dispatch) {
+    setTimeout(() => {
+      dispatch(searchVideo(searchText));
+    }, 5000);
+  };
+}
+
 export function addSong(title) {
   return {
     type: "ADD_SONG",

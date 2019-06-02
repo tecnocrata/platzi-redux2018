@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import rootReducer from "../reducers";
 import { Map as map } from "immutable";
 import rlogger from "redux-logger";
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 //console.log(normalized);
@@ -42,7 +43,8 @@ const logger = ({ getState, dispatch }) => {
 //const enhancer = applyMiddleware(logger);
 const enhancer = composeWithDevTools(
   applyMiddleware(rlogger),
-  applyMiddleware(logger)
+  applyMiddleware(logger),
+  applyMiddleware(thunk)
 );
 const store = createStore(rootReducer, map(), enhancer);
 
