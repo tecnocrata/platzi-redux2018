@@ -1,4 +1,9 @@
-import { OPEN_MODAL, CLOSE_MODAL, SEARCH_VIDEO } from "../action-types";
+import {
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  SEARCH_VIDEO,
+  LOADING_REQUEST
+} from "../action-types";
 export function openModal(id) {
   //return { type: "OPEN_MODAL", payload: { mediaId: id } };
   return { type: OPEN_MODAL, payload: { mediaId: id } };
@@ -24,14 +29,25 @@ export function searchVideo(searchText) {
   };
 }
 
-export function searchAsynVideo(searchText) {
+export function searchAsyncVideo(searchText) {
   //simulando el uso de:
   //fetch
   //axios
   return function(dispatch) {
+    dispatch(LoadingRequest(true));
     setTimeout(() => {
       dispatch(searchVideo(searchText));
+      dispatch(LoadingRequest(false));
     }, 5000);
+  };
+}
+
+export function LoadingRequest(flag) {
+  return {
+    type: LOADING_REQUEST,
+    payload: {
+      loading: flag
+    }
   };
 }
 

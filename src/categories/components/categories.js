@@ -11,6 +11,7 @@ function Categories(props) {
   if (props.searchVideos.size == 0)
     return (
       <div className="Categories">
+        {props.loading === true && <div>Loading</div>}
         <Search />
         {cats.map(item => {
           //ITEM is now a MAP!!!!!
